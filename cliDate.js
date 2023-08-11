@@ -4,6 +4,9 @@ const argv = yargs(hideBin(process.argv)).argv;
 const argvArray = Object.keys(argv);
 const currentDate = new Date();
 // console.log(argv)
+// console.log(argv)
+// console.log(argv)
+// console.log(argv)
 
 const getCurrentDate = () => {
   if (argv["_"].length === 1 && argvArray.length === 2) {
