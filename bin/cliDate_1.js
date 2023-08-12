@@ -1,9 +1,13 @@
+#!/usr/bin/env node
 const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
+const { array } = require("yargs");
 const argv = yargs(hideBin(process.argv)).argv;
 const argvArray = Object.keys(argv);
 const currentDate = new Date();
-// console.log(argv)
+console.log(argv);
+console.log(argv["_"]);
+console.log(argv);
 
 const getCurrentDate = () => {
   if (argv["_"].length === 1 && argvArray.length === 2) {
@@ -18,13 +22,19 @@ const getcurrentYear = () => {
 };
 
 const getcurrentMonth = () => {
-  if ((argvArray.includes("month") || argvArray.includes("m")) && argv["_"].length === 1) {
+  if (
+    (argvArray.includes("month") || argvArray.includes("m")) &&
+    argv["_"].length === 1
+  ) {
     console.log(currentDate.getMonth() + 1);
   }
 };
 
 const getcurrentDay = () => {
-  if ((argvArray.includes("date") || argvArray.includes("d")) && argv["_"].length === 1)  {
+  if (
+    (argvArray.includes("date") || argvArray.includes("d")) &&
+    argv["_"].length === 1
+  ) {
     console.log(currentDate.getDate());
   }
 };
@@ -34,8 +44,8 @@ const predicateTwoArgs = () => {
 };
 
 const predicateOneCurrent = () => {
-    return argv["_"].length === 1 ? true : false;
-  };
+  return argv["_"].length === 1 ? true : false;
+};
 
 const getNextDate = () => {
   if (argv["_"][1] === "add" && argvArray.includes("d")) {
@@ -57,11 +67,11 @@ const mainGetDate = () => {
   if (argv && argv["_"][0] === "current") {
     getCurrentDate();
     if (predicateTwoArgs()) {
-        if (predicateOneCurrent()) {
-            getcurrentYear();
-            getcurrentMonth();
-            getcurrentDay();
-        }
+      if (predicateOneCurrent()) {
+        getcurrentYear();
+        getcurrentMonth();
+        getcurrentDay();
+      }
       getNextDate();
       getPrevDate();
     }
